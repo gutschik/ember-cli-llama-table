@@ -1,9 +1,11 @@
 .llama-table {
-	overflow: auto;
+	overflow-x: scroll;
+	overflow-y: hidden;
 	width: 100%;
 	border-width: 1px;
 	border-style: solid;
 	position: relative;
+	min-height: 30px;
 }
 
 .llama-columngroup {
@@ -93,6 +95,13 @@
 .llama-body {
 	min-height: 30px;
 	outline: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	min-width: 100%;
 }
 
 .llama-content {

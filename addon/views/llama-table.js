@@ -90,9 +90,12 @@ var LlamaTable = Em.ContainerView.extend(ScrollXYMixin, {
 		$table.scrollTop(this.get('scrollTop'));
 	}),
 
-	setHeight: observer('controller.maxHeight', function () {
+	setHeight: observer('controller.maxHeight', 'rows.[]', function () {
 		var $table = Em.$(this.$());
+		var $content = Em.$(this.$('.llama-content:first-child'));
+		debugger; // sometimes $content.height() = 0 -> race condition??
 		$table.css('maxHeight', this.get('controller.maxHeight'));
+		$table.css('height', Math.min($content.height(), this.get('controller.maxHeight')) );
 	}),
 
 	actions: {

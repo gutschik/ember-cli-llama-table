@@ -15,19 +15,13 @@ var LlamaHeader = Em.CollectionView.extend({
 
 	didInsertElement: function () {
 		this._super();
-		this.updateScrollPosition();
 	},
 
 	createChildView: function (View, attrs) {
 		var columns = get(attrs, 'content');
 		set(attrs, 'columns', columns);
 		return this._super(View, attrs);
-	},
-
-	updateScrollPosition: observer('scrollTop', function () {
-		var $header = Em.$(this.$());
-		$header.css('marginTop', this.get('scrollTop'));
-	})
+	}
 });
 
 export default LlamaHeader;
